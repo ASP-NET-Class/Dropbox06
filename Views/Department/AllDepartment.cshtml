@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Dropbox06.Models.Department>
+<p>
+    <a asp-action="AddDepartment">
+        Add a Department
+    </a>
+</p>
+@{
+    if (Model.Count() < 1)
+    {
+        <p>No Department in the database yet.</p>
+    }
+    else
+    {
+        <h3>All Departments</h3>
+        <table border="1">
+            <tr>
+                <th>Department ID</th>
+                <th>Department Name</th>
+            </tr>
+            @foreach (var department in Model)
+                {
+                    <tr>
+                        <td>@department.DepartmentId</td>
+                        <td>@department.DepartmentName</td>
+                    </tr>
+                }
+        </table>
+    }
+}

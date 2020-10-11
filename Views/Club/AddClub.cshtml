@@ -1,0 +1,15 @@
+﻿@model Dropbox06.ViewModels.ClubAddClubViewModel
+<form asp-controller="Club" asp-action="AddClub"
+      method="post">
+    <label asp-for="Club.ClubName"></label>
+    <input asp-for="Club.ClubName" />
+    <br />
+    <label asp-for="Club.StudentCapacity"></label>
+    <input asp-for="Club.StudentCapacity" />
+    <br />
+    <label asp-for="Department.DepartmentName"></label>
+    <select asp-for="Department.DepartmentName"
+            asp-items="@Model.DepartmentList"></select>
+    <br />
+    <button type="submit">Add Club</button>
+</form>

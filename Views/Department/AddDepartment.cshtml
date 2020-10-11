@@ -1,0 +1,8 @@
+﻿@model Dropbox06.Models.Department
+<form asp-controller="Department"
+      asp-action="AddDepartment" method="post">
+    <label asp-for="DepartmentName"></label>
+    <input asp-for="DepartmentName" />
+    <br />
+    <button type="submit">Add Department</button>
+</form>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Dropbox06.Models.Club>
+<p>
+    <a asp-action="AddClub">
+        Add a Club
+    </a>
+</p>
+@{
+    if (Model.Count() < 1)
+    {
+        <p>No Club in database yet.</p>
+    }
+    else
+    {
+        <h3>All Clubs</h3>
+        <table border="1">
+            <tr>
+                <th>Club ID</th>
+                <th>Club Name</th>
+                <th>Student Capacity</th>
+                <th>Department Name</th>
+            </tr>
+            @foreach (var club in Model)
+                {
+                    <tr>
+                        <td>@club.ClubId</td>
+                        <td>@club.ClubName</td>
+                        <td>@club.StudentCapacity</td>
+                        <td>@club.Department.DepartmentName</td>
+                    </tr>
+                }
+        </table>
+    }
+}
