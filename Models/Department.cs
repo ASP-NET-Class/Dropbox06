@@ -9,7 +9,12 @@ namespace Dropbox06.Models
     {
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
-        public int studentCapacity { get; set; }
+        public int StudentCapacity { get; set; }
         public Club Club { get; set; }
+
+        public static implicit operator string(Department v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

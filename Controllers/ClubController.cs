@@ -19,7 +19,7 @@ namespace Dropbox06.Controllers
         }
         public async Task<IActionResult> AllClub()
         {
-            var club = await db.Clubs.Include(c => c.Department).ToListAsync();
+            List<Club> club = await db.Clubs.Include(c => c.Department).ToListAsync();
             return View(club);
         }
         public async Task<IActionResult> AddClub()
