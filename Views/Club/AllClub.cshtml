@@ -22,9 +22,12 @@
             @foreach (var club in Model)
                 {
                     <tr>
-                        <td>@club.ClubId</td>
+                        <td><a asp-controller="Student" asp-action="EnrollClub"
+                               asp-route-id="@club.ClubId">
+                            @club.ClubId</a></td>
                         <td>@club.ClubName</td>
-                        <td>@club.StudentCapacity</td>
+                        <td><a asp-controller="Student" asp-action="AllClassmate"
+                               asp-route-id="@club.ClubId">@club.StudentCapacity</a></td>
                         <td>@club.Department.DepartmentName</td>
                     </tr>
                 }

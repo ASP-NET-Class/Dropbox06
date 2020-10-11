@@ -29,7 +29,15 @@ namespace Dropbox06.Migrations
                     b.Property<string>("ClubName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentCapacity")
+                        .HasColumnType("int");
+
                     b.HasKey("ClubId");
+
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Clubs");
                 });
@@ -41,27 +49,80 @@ namespace Dropbox06.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ClubId")
-                        .HasColumnType("int");
-
                     b.Property<string>("DepartmentName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("studentCapacity")
-                        .HasColumnType("int");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Office")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DepartmentId");
-
-                    b.HasIndex("ClubId");
 
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("Dropbox06.Models.Department", b =>
+            modelBuilder.Entity("Dropbox06.Models.EnrollClub", b =>
+                {
+                    b.Property<int>("EnrollClubId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClubId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EnrollClubId");
+
+                    b.HasIndex("ClubId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("EnrollClubs");
+                });
+
+            modelBuilder.Entity("Dropbox06.Models.Student", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("StudentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StudentId");
+
+                    b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Dropbox06.Models.Club", b =>
+                {
+                    b.HasOne("Dropbox06.Models.Department", "Department")
+                        .WithMany("Clubs")
+                        .HasForeignKey("DepartmentId");
+                });
+
+            modelBuilder.Entity("Dropbox06.Models.EnrollClub", b =>
                 {
                     b.HasOne("Dropbox06.Models.Club", "Club")
-                        .WithMany("Departments")
-                        .HasForeignKey("ClubId");
+                        .WithMany("EnrollClubs")
+                        .HasForeignKey("ClubId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dropbox06.Models.Student", "Student")
+                        .WithMany("EnrollClubs")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

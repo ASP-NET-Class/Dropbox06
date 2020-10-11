@@ -47,7 +47,7 @@ namespace Dropbox06
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Employee}/{action=Index}/{id?}");
+                    pattern: "{controller=Club}/{action=Index}/{id?}");
             });
         }
 

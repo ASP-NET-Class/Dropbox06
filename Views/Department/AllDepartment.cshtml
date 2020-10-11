@@ -16,13 +16,19 @@
             <tr>
                 <th>Department ID</th>
                 <th>Department Name</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Office Location</th>
             </tr>
             @foreach (var department in Model)
                 {
-                    <tr>
-                        <td>@department.DepartmentId</td>
-                        <td>@department.DepartmentName</td>
-                    </tr>
+        <tr>
+            <td>@department.DepartmentId</td>
+            <td>@department.DepartmentName</td>
+            <td>@department.Phone</td>
+            <td>@department.Email</td>
+            <td>@department.Office</td>
+        </tr>
                 }
         </table>
     }

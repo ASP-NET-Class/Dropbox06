@@ -9,7 +9,9 @@ namespace Dropbox06.Models
     {
         public int ClubId { get; set; }
         public string ClubName { get; set; }
-        public ICollection<Department> Departments { get; set; }
+        public int StudentCapacity { get; set; }
+        public Department Department { get; set; }
+        public ICollection<EnrollClub> EnrollClubs { get; set; }
 
     }
 }
